@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OptionM_Error" xml:space="preserve">
+    <value>Option M must be a positive number</value>
+  </data>
+  <data name="OptionN_Error" xml:space="preserve">
+    <value>Option N must be a positive number</value>
+  </data>
+  <data name="UserId_Error" xml:space="preserve">
+    <value>User Id must be a number</value>
+  </data>
+  <data name="BaseFile_Dialog_Description" xml:space="preserve">
+    <value>Select the directory / files that you want to use as Base Files.</value>
+  </data>
+  <data name="Unauthorized_Access_Error" xml:space="preserve">
+    <value>You do not have access to those files / folders.</value>
+  </data>
+  <data name="Unauthorized_Access_Error_Caption" xml:space="preserve">
+    <value>Unauthorized Access Error</value>
+  </data>
+  <data name="SourceFile_Dialog_Description" xml:space="preserve">
+    <value>Select the directory / files that you want to use as Source Files.</value>
+  </data>
+  <data name="Moss_Email_Format_String" xml:space="preserve">
+    <value>{0}{1}</value>
+  </data>
+  <data name="FileList_SourceFile" xml:space="preserve">
+    <value>Source File(s)</value>
+  </data>
+  <data name="FileList_BaseFiles" xml:space="preserve">
+    <value>Base File(s)</value>
+  </data>
+  <data name="Email_Clip_Board" xml:space="preserve">
+    <value>registeruser 
+mail </value>
+  </data>
+  <data name="Email_Moss_ID_Request" xml:space="preserve">
+    <value>Email moss@moss.stanford.edu - The text below (it should appear exactly as follows)
+
+registeruser 
+mail </value>
+  </data>
+  <data name="Moss_Requesting_Instructions" xml:space="preserve">
+    <value>Moss is being provided in the hope that it will benefit the educational community. Moss is fast, easy to use, and free. In the past, access has been restricted to instructors and staff of programming courses. This is no longer the case, and anyone may obtain a Moss account.
+However, Moss is for non-commercial use. If you are interested in commercial uses of Moss, contact Similix Corporation.
+
+To obtain a Moss account, send a mail message to moss@moss.stanford.edu. The body of the message should appear exactly as follows:
+
+registeruser 
+mail username@domain
+
+where the last bit is your email address.
+
+Enter your email address below and the form will generate the contents of the email for you.</value>
+  </data>
+  <data name="Option_M_Tool_Tip" xml:space="preserve">
+    <value>++ The -m option sets the maximum number of times a given passage may appear 
+before it is ignored.  A passage of code that appears in many programs 
+is probably legitimate sharing and not the result of plagiarism.  With -m N, 
+any passage appearing in more than N programs is treated as if it appeared in 
+a base file (i.e., it is never reported).  Option -m can be used to control 
+moss' sensitivity.  With -m 2, moss reports only passages that appear 
+in exactly two programs.  If one expects many very similar solutions 
+(e.g., the short first assignments typical of introductory programming courses) 
+then using -m 3 or -m 4 is a good way to eliminate all but 
+truly unusual matches between programs while still being able to detect 
+3-way or 4-way plagiarism.  With -m 1000000 (or any very large number), 
+moss reports all matches, no matter how often they appear.  
+The -m setting is most useful for large assignments where one also a base file 
+expected to hold all legitimately shared code.  
+The default for -m is 3.</value>
+  </data>
+  <data name="Tool_Tip_Insructions" xml:space="preserve">
+    <value>Hover over each Option Label
+ for information about the option. </value>
+  </data>
+  <data name="Option_Beta_Tool_Tip" xml:space="preserve">
+    <value>++ Represents the -x option sends queries to the current experimental version of the server. 
+The experimental server has the most recent Moss features and is also usually 
+less stable (read: may have more bugs).</value>
+  </data>
+  <data name="Option_B_Tool_Tip" xml:space="preserve">
+    <value>++ The -b option names a "base file".  Moss normally reports all code 
+that matches in pairs of files.  When a base file is supplied, 
+program code that also appears in the base file is not counted in matches. 
+A typical base file will include, for example, the instructor-supplied 
+code for an assignment.  Multiple -b options are allowed.  You should use a base file if it is 
+convenient; base files improve results, but are not usually necessary for obtaining useful information. </value>
+  </data>
+  <data name="Option_C_Tool_Tip" xml:space="preserve">
+    <value>++ The -c option supplies a comment string that is attached to the generated 
+report.  This option facilitates matching queries submitted with replies 
+received, especially when several queries are submitted at once.</value>
+  </data>
+  <data name="Option_D_Tool_Tip" xml:space="preserve">
+    <value>++ The -d option specifies that submissions are by directory, not by file. 
+That is, files in a directory are taken to be part of the same program, 
+and reported matches are organized accordingly by directory.</value>
+  </data>
+  <data name="Option_N_Tool_Tip" xml:space="preserve">
+    <value>The -n option determines the number of matching files to show in the results. 
+The default is 250.</value>
+  </data>
+  <data name="User_Id_Tool_Tip" xml:space="preserve">
+    <value>For information on how to get a MOSS UserID
+Look under the Get User Id Tab</value>
+  </data>
+  <data name="Moss_Request_URI_Error" xml:space="preserve">
+    <value>Not a valid response URL</value>
+  </data>
+  <data name="File_List_Empty_Error" xml:space="preserve">
+    <value>You must select source files</value>
+  </data>
+  <data name="Request_Error_Caption" xml:space="preserve">
+    <value>An error occured</value>
+  </data>
+</root>

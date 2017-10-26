@@ -1,0 +1,77 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MossApp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OptionN" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="OptionC" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="OptionM" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="UserId" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Languages" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;c&lt;/string&gt;
+  &lt;string&gt;cc&lt;/string&gt;
+  &lt;string&gt;java&lt;/string&gt;
+  &lt;string&gt;ml&lt;/string&gt;
+  &lt;string&gt;pascal&lt;/string&gt;
+  &lt;string&gt;ada&lt;/string&gt;
+  &lt;string&gt;lisp&lt;/string&gt;
+  &lt;string&gt;scheme&lt;/string&gt;
+  &lt;string&gt;haskell&lt;/string&gt;
+  &lt;string&gt;fortran&lt;/string&gt;
+  &lt;string&gt;ascii&lt;/string&gt;
+  &lt;string&gt;vhdl&lt;/string&gt;
+  &lt;string&gt;perl&lt;/string&gt;
+  &lt;string&gt;matlab&lt;/string&gt;
+  &lt;string&gt;python&lt;/string&gt;
+  &lt;string&gt;mips&lt;/string&gt;
+  &lt;string&gt;prolog&lt;/string&gt;
+  &lt;string&gt;spice&lt;/string&gt;
+  &lt;string&gt;vb&lt;/string&gt;
+  &lt;string&gt;csharp&lt;/string&gt;
+  &lt;string&gt;modula2&lt;/string&gt;
+  &lt;string&gt;a8086&lt;/string&gt;
+  &lt;string&gt;javascript&lt;/string&gt;
+  &lt;string&gt;plsql&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Server" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">moss.stanford.edu</Value>
+    </Setting>
+    <Setting Name="Port" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">7690</Value>
+    </Setting>
+    <Setting Name="MossOption" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">moss</Value>
+    </Setting>
+    <Setting Name="DirectoryOption" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">directory</Value>
+    </Setting>
+    <Setting Name="SendOption" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">send</Value>
+    </Setting>
+    <Setting Name="ExperimentalOption" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">X</Value>
+    </Setting>
+    <Setting Name="MaxMatchesOption" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">maxmatches</Value>
+    </Setting>
+    <Setting Name="ShowOption" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">show</Value>
+    </Setting>
+    <Setting Name="QueryOption" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">query</Value>
+    </Setting>
+    <Setting Name="EndOption" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">end</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
