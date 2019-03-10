@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+            <section name="MossApp.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
+        </sectionGroup>
+        <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+            <section name="MossApp.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false"/>
+        </sectionGroup>
+    </configSections>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2"/>
+    </startup>
+    <userSettings>
+        <MossApp.Properties.Settings>
+            <setting name="OptionN" serializeAs="String">
+                <value>250</value>
+            </setting>
+            <setting name="OptionC" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="OptionM" serializeAs="String">
+                <value>3</value>
+            </setting>
+            <setting name="UserId" serializeAs="String">
+                <value>0</value>
+            </setting>
+        </MossApp.Properties.Settings>
+    </userSettings>
+    <applicationSettings>
+        <MossApp.Properties.Settings>
+            <setting name="Languages" serializeAs="Xml">
+                <value>
+                    <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <string>c,.c,.h</string>
+                        <string>cc,.cpp,.h,.hpp,.cc</string>
+                        <string>java,.java</string>
+                        <string>ml,.ml</string>
+                        <string>pascal,.pas</string>
+                        <string>ada,.ada</string>
+                        <string>lisp,.lisp</string>
+                        <string>scheme,.scm</string>
+                        <string>haskell,.hs</string>
+                        <string>fortran,.f90,.f95,.f03</string>
+                        <string>ascii,.asc,.txt</string>
+                        <string>vhdl,.vhdl</string>
+                        <string>perl,.perl,.pl</string>
+                        <string>matlab,.matlab</string>
+                        <string>python,.py</string>
+                        <string>mips,.s,.asm</string>
+                        <string>prolog,.pl</string>
+                        <string>spice,.sp</string>
+                        <string>vb,.vb</string>
+                        <string>csharp,.cs</string>
+                        <string>modula2,.mod</string>
+                        <string>a8086,.asm</string>
+                        <string>javascript,.js</string>
+                        <string>plsql,.json</string>
+                    </ArrayOfString>
+                </value>
+            </setting>
+            <setting name="Server" serializeAs="String">
+                <value>moss.stanford.edu</value>
+            </setting>
+            <setting name="Port" serializeAs="String">
+                <value>7690</value>
+            </setting>
+            <setting name="MossOption" serializeAs="String">
+                <value>moss</value>
+            </setting>
+            <setting name="DirectoryOption" serializeAs="String">
+                <value>directory</value>
+            </setting>
+            <setting name="SendOption" serializeAs="String">
+                <value>send</value>
+            </setting>
+            <setting name="ExperimentalOption" serializeAs="String">
+                <value>X</value>
+            </setting>
+            <setting name="MaxMatchesOption" serializeAs="String">
+                <value>maxmatches</value>
+            </setting>
+            <setting name="ShowOption" serializeAs="String">
+                <value>show</value>
+            </setting>
+            <setting name="QueryOption" serializeAs="String">
+                <value>query</value>
+            </setting>
+            <setting name="EndOption" serializeAs="String">
+                <value>end</value>
+            </setting>
+        </MossApp.Properties.Settings>
+    </applicationSettings>
+</configuration>
