@@ -37,6 +37,7 @@ namespace MossApp
     using System.Windows.Forms;
 
     using MossApp.Properties;
+
     using static MossApp.Properties.Settings;
 
     /// <summary>
@@ -79,6 +80,14 @@ namespace MossApp
         /// </value>
         private List<string> SourceFileList { get; set; } = new List<string>();
 
+        /// <summary>
+        /// Gets or sets the languages.
+        /// </summary>
+        /// <value>
+        /// The languages and their associated file extensions.
+        /// </value>
+        private Dictionary<string, List<string>> Languages { get; set; } = new Dictionary<string, List<string>>();
+
         #region "Event Handlers"
 
         /// <summary>
@@ -101,6 +110,7 @@ namespace MossApp
             // Set instructions on the form. 
             this.UserIdInstructionsRichTextBox.Text = Resources.Moss_Requesting_Instructions;
             this.InstructionsLabel.Text = Resources.Tool_Tip_Insructions;
+            this.RestrictFileTypesLabel.Text = Resources.Restrict_Files_Instructions;
 
             // Read default values from setting file. 
             int setting = Default.UserId;
@@ -113,36 +123,28 @@ namespace MossApp
 
             // Set up dialog box. 
             this.dialog = new FolderBrowserDialog
-                {
-                    ShowNewFolderButton = false,
-                    RootFolder = Environment.SpecialFolder.Desktop
-                };
+                              {
+                                  ShowNewFolderButton = false, RootFolder = Environment.SpecialFolder.Desktop
+                              };
 
             // Set up languages
-            this.LanguagesComboBox.DataSource = Default.Languages;
+            // this.LanguagesComboBox.DataSource = Default.Languages;
+            this.ParseLanguageSettings();
+            this.LanguagesComboBox.SelectedIndexChanged -= this.LanguagesComboBox_SelectedIndexChanged;
+            this.LanguagesComboBox.DataSource = new BindingSource(this.Languages, null);
+            this.LanguagesComboBox.DisplayMember = "Key";
+            this.LanguagesComboBox.ValueMember = "Key";
+            this.LanguagesComboBox.SelectedIndexChanged += this.LanguagesComboBox_SelectedIndexChanged;
+            this.RestrictFileTypeTextBox.Text = string.Join(",", this.Languages[this.Languages.First().Key]);
 
             // Set up tool tips. 
-            this.OptionToolTip.SetToolTip(
-                this.OptionMLabel,
-                Resources.Option_M_Tool_Tip);
-            this.OptionToolTip.SetToolTip(
-                this.BaseFilesButton,
-                Resources.Option_B_Tool_Tip);
-            this.OptionToolTip.SetToolTip(
-                this.ExperimentalServerCheckBox,
-                Resources.Option_Beta_Tool_Tip);
-            this.OptionToolTip.SetToolTip(
-                this.OptionNLabel,
-                Resources.Option_N_Tool_Tip);
-            this.OptionToolTip.SetToolTip(
-                this.OptionCLabel,
-                Resources.Option_C_Tool_Tip);
-            this.OptionToolTip.SetToolTip(
-                this.DirectoryModeCheckBox,
-                Resources.Option_D_Tool_Tip);
-            this.OptionToolTip.SetToolTip(
-                this.UserIdLinkLabel,
-                Resources.User_Id_Tool_Tip);
+            this.OptionToolTip.SetToolTip(this.OptionMLabel, Resources.Option_M_Tool_Tip);
+            this.OptionToolTip.SetToolTip(this.BaseFilesButton, Resources.Option_B_Tool_Tip);
+            this.OptionToolTip.SetToolTip(this.ExperimentalServerCheckBox, Resources.Option_Beta_Tool_Tip);
+            this.OptionToolTip.SetToolTip(this.OptionNLabel, Resources.Option_N_Tool_Tip);
+            this.OptionToolTip.SetToolTip(this.OptionCLabel, Resources.Option_C_Tool_Tip);
+            this.OptionToolTip.SetToolTip(this.DirectoryModeCheckBox, Resources.Option_D_Tool_Tip);
+            this.OptionToolTip.SetToolTip(this.UserIdLinkLabel, Resources.User_Id_Tool_Tip);
         }
 
         /// <summary>
@@ -152,11 +154,10 @@ namespace MossApp
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void EmailTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.MossMailLabel.Text = 
-                string.Format(
-                    Resources.Moss_Email_Format_String, 
-                    Resources.Email_Moss_ID_Request, 
-                    this.EmailTextBox.Text);
+            this.MossMailLabel.Text = string.Format(
+                Resources.Moss_Email_Format_String,
+                Resources.Email_Moss_ID_Request,
+                this.EmailTextBox.Text);
 
             Clipboard.SetText($"{Resources.Email_Clip_Board}{this.EmailTextBox.Text}");
         }
@@ -178,28 +179,27 @@ namespace MossApp
                 Default.Save();
 
                 var request = new MossRequest
-                {
-                    UserId = Convert.ToInt32(this.UserIdTextBox.Text),
-                    IsDirectoryMode = this.DirectoryModeCheckBox.Checked,
-                    IsBetaRequest = this.ExperimentalServerCheckBox.Checked,
-                    Comments = this.OptionCTextBox.Text,
-                    Language = this.LanguagesComboBox.SelectedItem.ToString(),
-                    NumberOfResultsToShow = Convert.ToInt32(this.OptionNTextBox.Text),
-                    MaxMatches = Convert.ToInt32(this.OptionMTextBox.Text)
-                };
+                                  {
+                                      UserId = Convert.ToInt32(this.UserIdTextBox.Text),
+                                      IsDirectoryMode = this.DirectoryModeCheckBox.Checked,
+                                      IsBetaRequest = this.ExperimentalServerCheckBox.Checked,
+                                      Comments = this.OptionCTextBox.Text,
+                                      Language = this.LanguagesComboBox.SelectedValue.ToString(),
+                                      NumberOfResultsToShow = Convert.ToInt32(this.OptionNTextBox.Text),
+                                      MaxMatches = Convert.ToInt32(this.OptionMTextBox.Text)
+                                  };
 
                 request.BaseFile.AddRange(this.BaseFileList);
                 request.Files.AddRange(this.SourceFileList);
 
-                string response;
-                if (request.SendRequest(out response))
+                if (request.SendRequest(out var response))
                 {
                     this.MossLinkLabel.Text = response;
                     this.WebBrowser.Navigate(new Uri(response));
                 }
                 else
                 {
-                   MessageBox.Show(
+                    MessageBox.Show(
                         response,
                         Resources.Request_Error_Caption,
                         MessageBoxButtons.OK,
@@ -232,9 +232,21 @@ namespace MossApp
                 var result = this.dialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
+                    // var folderName = this.dialog.SelectedPath;
+                    // this.BaseFileList = Directory.GetFiles(folderName, AllFiles, SearchOption.AllDirectories).ToList();
                     var folderName = this.dialog.SelectedPath;
-                    this.BaseFileList = Directory.GetFiles(folderName, AllFiles, SearchOption.AllDirectories).ToList();
+                    if (this.RestrictFileTypesCheckBox.Checked)
+                    {
+                        var extensions = this.GetRestrictedFileTypes();
+                        this.BaseFileList = Directory.GetFiles(folderName, AllFiles, SearchOption.AllDirectories)
+                            .Where(ext => extensions.Contains(Path.GetExtension(ext))).ToList();
+                    }
+                    else
+                    {
+                        this.BaseFileList = Directory.GetFiles(folderName, AllFiles, SearchOption.AllDirectories).ToList();
+                    }
                 } // else, user did not click ok DoNothing();
+
                 this.UpdateFileList();
             }
             catch (UnauthorizedAccessException)
@@ -261,8 +273,19 @@ namespace MossApp
                 if (result == DialogResult.OK)
                 {
                     var folderName = this.dialog.SelectedPath;
-                    this.SourceFileList = Directory.GetFiles(folderName, AllFiles, SearchOption.AllDirectories).ToList();
+                    if (this.RestrictFileTypesCheckBox.Checked)
+                    {
+                        var extensions = this.GetRestrictedFileTypes();
+                        this.SourceFileList = Directory.GetFiles(folderName, AllFiles, SearchOption.AllDirectories)
+                            .Where(ext => extensions.Contains(Path.GetExtension(ext))).ToList();
+                    }
+                    else
+                    {
+                        this.SourceFileList = Directory.GetFiles(folderName, AllFiles, SearchOption.AllDirectories)
+                            .ToList();
+                    }
                 } // else, user did not click ok DoNothing();
+
                 this.UpdateFileList();
             }
             catch (UnauthorizedAccessException)
@@ -275,6 +298,50 @@ namespace MossApp
             }
         }
 
+        /// <summary>Handles the CheckedChanged event of the RestrictFileTypesCheckBox control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void RestrictFileTypesCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            var extensions = this.GetRestrictedFileTypes();
+            if (extensions.Count > 0)
+            {
+                if (this.SourceFileList.Count > 0)
+                {
+                    this.SourceFileList = this.SourceFileList.Where(file => extensions.Any(file.EndsWith)).ToList();
+                } // else, no source files to filter, DoNothing();
+
+                if (this.BaseFileList.Count > 0)
+                {
+                    this.BaseFileList = this.BaseFileList.Where(file => extensions.Any(file.EndsWith)).ToList();
+                } // else, no base files to filter, DoNothing();
+
+                this.UpdateFileList();
+            } // else, no extensions, DoNothing();
+        }
+
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the LanguagesComboBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void LanguagesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.PopulateRestrictedFiles();
+        }
+
+        /// <summary>
+        /// Handles the Click event of the ClearFilesButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void ClearFilesButton_Click(object sender, EventArgs e)
+        {
+            this.SourceFileList.Clear();
+            this.BaseFileList.Clear();
+            this.FilesRichTextBox.Clear();
+        }
+
         #endregion
 
         /// <summary>
@@ -285,7 +352,7 @@ namespace MossApp
             var builder = new StringBuilder();
             if (this.BaseFileList.Count > 0)
             {
-                builder.AppendLine(Resources.FileList_BaseFiles); 
+                builder.AppendLine(Resources.FileList_BaseFiles);
                 builder.AppendLine("----------------------------------------------");
                 foreach (var file in this.BaseFileList)
                 {
@@ -296,13 +363,14 @@ namespace MossApp
             builder.AppendLine(string.Empty);
             if (this.SourceFileList.Count > 0)
             {
-                builder.AppendLine(Resources.FileList_SourceFile); 
+                builder.AppendLine(Resources.FileList_SourceFile);
                 builder.AppendLine("----------------------------------------------");
                 foreach (var file in this.SourceFileList)
                 {
                     builder.AppendLine(file);
                 }
             }
+
             this.FilesRichTextBox.Text = builder.ToString();
         }
 
@@ -342,16 +410,58 @@ namespace MossApp
         }
 
         /// <summary>
-        /// Determines whether the textbox contains is a valid positive integer value.
+        /// Determines whether the text box contains is a valid positive integer value.
         /// </summary>
         /// <param name="textBox">The text box.</param>
         /// <returns>
-        ///   <c>true</c> if the textbox contains is a valid positive integer value; otherwise, <c>false</c>.
+        ///   <c>true</c> if the text box contains is a valid positive integer value; otherwise, <c>false</c>.
         /// </returns>
         private bool IsValidPositiveInteger(Control textBox)
         {
-            int value = 0;
-            return int.TryParse(textBox?.Text, out value) && value >= 0;
+            return int.TryParse(textBox?.Text, out var value) && value >= 0;
+        }
+
+        /// <summary>
+        /// Parses the language settings into the Language Dictionary of
+        /// Languages => extensions.
+        /// </summary>
+        private void ParseLanguageSettings()
+        {
+            var languageList = Default.Languages;
+            foreach (var language in languageList)
+            {
+                var tokens = language.Split(',');
+                this.Languages.Add(tokens[0], new List<string>());
+                for (var index = 1; index < tokens.Length; index++)
+                {
+                    this.Languages[tokens[0]].Add(tokens[index]);
+                }
+
+                // because this setting is created with a specific format, this 
+                // should never fail. If it does, the underlying data source needs to be 
+                // fixed. 
+            }
+        }
+
+        /// <summary>
+        /// Gets the restricted file types as a list.
+        /// </summary>
+        /// <returns>
+        /// A list of files types to accept.
+        /// </returns>
+        private List<string> GetRestrictedFileTypes()
+        {
+            var files = this.RestrictFileTypeTextBox.Text;
+            return files.Length > 0 ? files.Split(',').ToList() : new List<string>();
+        }
+
+        /// <summary>
+        /// Populates the restricted files based on the selected file type.
+        /// </summary>
+        private void PopulateRestrictedFiles()
+        {
+            var chosenLanguage = this.LanguagesComboBox.SelectedValue.ToString();
+            this.RestrictFileTypeTextBox.Text = string.Join(",", this.Languages[chosenLanguage]);
         }
     }
 }

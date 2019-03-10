@@ -17,30 +17,30 @@
     <Setting Name="Languages" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;c&lt;/string&gt;
-  &lt;string&gt;cc&lt;/string&gt;
-  &lt;string&gt;java&lt;/string&gt;
-  &lt;string&gt;ml&lt;/string&gt;
-  &lt;string&gt;pascal&lt;/string&gt;
-  &lt;string&gt;ada&lt;/string&gt;
-  &lt;string&gt;lisp&lt;/string&gt;
-  &lt;string&gt;scheme&lt;/string&gt;
-  &lt;string&gt;haskell&lt;/string&gt;
-  &lt;string&gt;fortran&lt;/string&gt;
-  &lt;string&gt;ascii&lt;/string&gt;
-  &lt;string&gt;vhdl&lt;/string&gt;
-  &lt;string&gt;perl&lt;/string&gt;
-  &lt;string&gt;matlab&lt;/string&gt;
-  &lt;string&gt;python&lt;/string&gt;
-  &lt;string&gt;mips&lt;/string&gt;
-  &lt;string&gt;prolog&lt;/string&gt;
-  &lt;string&gt;spice&lt;/string&gt;
-  &lt;string&gt;vb&lt;/string&gt;
-  &lt;string&gt;csharp&lt;/string&gt;
-  &lt;string&gt;modula2&lt;/string&gt;
-  &lt;string&gt;a8086&lt;/string&gt;
-  &lt;string&gt;javascript&lt;/string&gt;
-  &lt;string&gt;plsql&lt;/string&gt;
+  &lt;string&gt;c,.c,.h&lt;/string&gt;
+  &lt;string&gt;cc,.cpp,.h,.hpp,.cc&lt;/string&gt;
+  &lt;string&gt;java,.java&lt;/string&gt;
+  &lt;string&gt;ml,.ml&lt;/string&gt;
+  &lt;string&gt;pascal,.pas&lt;/string&gt;
+  &lt;string&gt;ada,.ada&lt;/string&gt;
+  &lt;string&gt;lisp,.lisp&lt;/string&gt;
+  &lt;string&gt;scheme,.scm&lt;/string&gt;
+  &lt;string&gt;haskell,.hs&lt;/string&gt;
+  &lt;string&gt;fortran,.f90,.f95,.f03&lt;/string&gt;
+  &lt;string&gt;ascii,.asc,.txt&lt;/string&gt;
+  &lt;string&gt;vhdl,.vhdl&lt;/string&gt;
+  &lt;string&gt;perl,.perl,.pl&lt;/string&gt;
+  &lt;string&gt;matlab,.matlab&lt;/string&gt;
+  &lt;string&gt;python,.py&lt;/string&gt;
+  &lt;string&gt;mips,.s,.asm&lt;/string&gt;
+  &lt;string&gt;prolog,.pl&lt;/string&gt;
+  &lt;string&gt;spice,.sp&lt;/string&gt;
+  &lt;string&gt;vb,.vb&lt;/string&gt;
+  &lt;string&gt;csharp,.cs&lt;/string&gt;
+  &lt;string&gt;modula2,.mod&lt;/string&gt;
+  &lt;string&gt;a8086,.asm&lt;/string&gt;
+  &lt;string&gt;javascript,.js&lt;/string&gt;
+  &lt;string&gt;plsql,.json&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Server" Type="System.String" Scope="Application">

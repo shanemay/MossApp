@@ -12,7 +12,7 @@ namespace MossApp.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -75,30 +75,30 @@ namespace MossApp.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>c</string>
-  <string>cc</string>
-  <string>java</string>
-  <string>ml</string>
-  <string>pascal</string>
-  <string>ada</string>
-  <string>lisp</string>
-  <string>scheme</string>
-  <string>haskell</string>
-  <string>fortran</string>
-  <string>ascii</string>
-  <string>vhdl</string>
-  <string>perl</string>
-  <string>matlab</string>
-  <string>python</string>
-  <string>mips</string>
-  <string>prolog</string>
-  <string>spice</string>
-  <string>vb</string>
-  <string>csharp</string>
-  <string>modula2</string>
-  <string>a8086</string>
-  <string>javascript</string>
-  <string>plsql</string>
+  <string>c,.c,.h</string>
+  <string>cc,.cpp,.h,.hpp,.cc</string>
+  <string>java,.java</string>
+  <string>ml,.ml</string>
+  <string>pascal,.pas</string>
+  <string>ada,.ada</string>
+  <string>lisp,.lisp</string>
+  <string>scheme,.scm</string>
+  <string>haskell,.hs</string>
+  <string>fortran,.f90,.f95,.f03</string>
+  <string>ascii,.asc,.txt</string>
+  <string>vhdl,.vhdl</string>
+  <string>perl,.perl,.pl</string>
+  <string>matlab,.matlab</string>
+  <string>python,.py</string>
+  <string>mips,.s,.asm</string>
+  <string>prolog,.pl</string>
+  <string>spice,.sp</string>
+  <string>vb,.vb</string>
+  <string>csharp,.cs</string>
+  <string>modula2,.mod</string>
+  <string>a8086,.asm</string>
+  <string>javascript,.js</string>
+  <string>plsql,.json</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Languages {
             get {

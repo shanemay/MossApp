@@ -248,6 +248,16 @@ namespace MossApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter a list of accepted extensions (with dot),
+        ///for example: .cpp,.cc,.hpp.
+        /// </summary>
+        internal static string Restrict_Files_Instructions {
+            get {
+                return ResourceManager.GetString("Restrict_Files_Instructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select the directory / files that you want to use as Source Files..
         /// </summary>
         internal static string SourceFile_Dialog_Description {

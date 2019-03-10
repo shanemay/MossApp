@@ -231,4 +231,8 @@ Look under the Get User Id Tab</value>
   <data name="Request_Error_Caption" xml:space="preserve">
     <value>An error occured</value>
   </data>
+  <data name="Restrict_Files_Instructions" xml:space="preserve">
+    <value>Enter a list of accepted extensions (with dot),
+for example: .cpp,.cc,.hpp</value>
+  </data>
 </root>

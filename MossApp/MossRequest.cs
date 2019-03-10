@@ -90,8 +90,8 @@ namespace MossApp
             this.Files = new List<string>();
             this.BaseFile = new List<string>();
             this.UserId = 0;
-            this.Server = Properties.Settings.Default.Server;
-            this.Port = Properties.Settings.Default.Port;
+            this.Server = Settings.Default.Server;
+            this.Port = Settings.Default.Port;
             this.language = string.Empty;
             this.comments = string.Empty;
             this.MaxMatches = DefaultMaxMatches;
@@ -217,15 +217,9 @@ namespace MossApp
         /// </remarks>
         public string Language
         {
-            get
-            {
-                return this.language;
-            }
+            get => this.language;
 
-            set
-            {
-                this.language = value ?? string.Empty;
-            }
+            set => this.language = value ?? string.Empty;
         }
 
         /// <summary>
@@ -241,15 +235,9 @@ namespace MossApp
         /// </remarks>
         public string Comments
         {
-            get
-            {
-                return this.comments;
-            }
+            get => this.comments;
 
-            set
-            {
-                this.comments = value ?? string.Empty;
-            }
+            set => this.comments = value ?? string.Empty;
         }
 
         /// <summary>
@@ -353,21 +341,18 @@ namespace MossApp
                     this.SendOption(Settings.Default.EndOption, string.Empty, socket);
                 }
 
-                Uri url;
-                if (Uri.TryCreate(result, UriKind.Absolute, out url))
+                if (Uri.TryCreate(result, UriKind.Absolute, out var url))
                 {
-                    response = url.ToString().IndexOf("\n", System.StringComparison.Ordinal) > 0 ? url.ToString().Split('\n')[0] : url.ToString();
+                    response = url?.ToString().IndexOf("\n", System.StringComparison.Ordinal) > 0 ? url.ToString().Split('\n')[0] : url?.ToString();
                     return true;
-                }
-                else
-                {
-                    response = Resources.Moss_Request_URI_Error;
-                    return false;
-                }
+                } // else, not a valid URL, DoNothing();
+
+                response = Resources.Moss_Request_URI_Error;
+                return false;
             }
             catch (Exception ex)
             {
-                // TODO Change from exception
+                // TODO Change from exception never catch exception...
                 response = ex.Message;
                 return false;
             }

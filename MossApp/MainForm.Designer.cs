@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.SubmissionTab = new System.Windows.Forms.TabPage();
+            this.RestrictFileTypesLabel = new System.Windows.Forms.Label();
+            this.RestrictFileTypeTextBox = new System.Windows.Forms.TextBox();
+            this.RestrictFileTypesCheckBox = new System.Windows.Forms.CheckBox();
             this.InstructionsLabel = new System.Windows.Forms.Label();
             this.ErrorLabel = new System.Windows.Forms.Label();
             this.MossLinkLabel = new System.Windows.Forms.LinkLabel();
@@ -51,13 +54,14 @@
             this.UserIdTextBox = new System.Windows.Forms.TextBox();
             this.UserIdLinkLabel = new System.Windows.Forms.LinkLabel();
             this.BrowserTab = new System.Windows.Forms.TabPage();
+            this.WebBrowser = new System.Windows.Forms.WebBrowser();
             this.UserIdTab = new System.Windows.Forms.TabPage();
             this.MossMailLabel = new System.Windows.Forms.Label();
             this.UserIdInstructionsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.OptionToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.WebBrowser = new System.Windows.Forms.WebBrowser();
+            this.ClearFilesButton = new System.Windows.Forms.Button();
             this.TabControl.SuspendLayout();
             this.SubmissionTab.SuspendLayout();
             this.BrowserTab.SuspendLayout();
@@ -74,11 +78,15 @@
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(812, 637);
+            this.TabControl.Size = new System.Drawing.Size(804, 637);
             this.TabControl.TabIndex = 0;
             // 
             // SubmissionTab
             // 
+            this.SubmissionTab.Controls.Add(this.ClearFilesButton);
+            this.SubmissionTab.Controls.Add(this.RestrictFileTypesLabel);
+            this.SubmissionTab.Controls.Add(this.RestrictFileTypeTextBox);
+            this.SubmissionTab.Controls.Add(this.RestrictFileTypesCheckBox);
             this.SubmissionTab.Controls.Add(this.InstructionsLabel);
             this.SubmissionTab.Controls.Add(this.ErrorLabel);
             this.SubmissionTab.Controls.Add(this.MossLinkLabel);
@@ -101,27 +109,55 @@
             this.SubmissionTab.Location = new System.Drawing.Point(4, 25);
             this.SubmissionTab.Name = "SubmissionTab";
             this.SubmissionTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SubmissionTab.Size = new System.Drawing.Size(804, 608);
+            this.SubmissionTab.Size = new System.Drawing.Size(796, 608);
             this.SubmissionTab.TabIndex = 0;
             this.SubmissionTab.Text = "Submission Info";
             this.SubmissionTab.UseVisualStyleBackColor = true;
+            // 
+            // RestrictFileTypesLabel
+            // 
+            this.RestrictFileTypesLabel.AutoSize = true;
+            this.RestrictFileTypesLabel.Location = new System.Drawing.Point(513, 139);
+            this.RestrictFileTypesLabel.Name = "RestrictFileTypesLabel";
+            this.RestrictFileTypesLabel.Size = new System.Drawing.Size(15, 13);
+            this.RestrictFileTypesLabel.TabIndex = 22;
+            this.RestrictFileTypesLabel.Text = "R";
+            // 
+            // RestrictFileTypeTextBox
+            // 
+            this.RestrictFileTypeTextBox.Location = new System.Drawing.Point(516, 116);
+            this.RestrictFileTypeTextBox.Name = "RestrictFileTypeTextBox";
+            this.RestrictFileTypeTextBox.Size = new System.Drawing.Size(255, 20);
+            this.RestrictFileTypeTextBox.TabIndex = 21;
+            // 
+            // RestrictFileTypesCheckBox
+            // 
+            this.RestrictFileTypesCheckBox.AutoSize = true;
+            this.RestrictFileTypesCheckBox.Location = new System.Drawing.Point(516, 93);
+            this.RestrictFileTypesCheckBox.Name = "RestrictFileTypesCheckBox";
+            this.RestrictFileTypesCheckBox.Size = new System.Drawing.Size(110, 17);
+            this.RestrictFileTypesCheckBox.TabIndex = 20;
+            this.RestrictFileTypesCheckBox.Text = "Restrict FileTypes";
+            this.RestrictFileTypesCheckBox.UseVisualStyleBackColor = true;
+            this.RestrictFileTypesCheckBox.CheckedChanged += new System.EventHandler(this.RestrictFileTypesCheckBox_CheckedChanged);
             // 
             // InstructionsLabel
             // 
             this.InstructionsLabel.AutoSize = true;
             this.InstructionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InstructionsLabel.ForeColor = System.Drawing.Color.Red;
-            this.InstructionsLabel.Location = new System.Drawing.Point(513, 94);
+            this.InstructionsLabel.Location = new System.Drawing.Point(513, 178);
             this.InstructionsLabel.Name = "InstructionsLabel";
-            this.InstructionsLabel.Size = new System.Drawing.Size(0, 13);
+            this.InstructionsLabel.Size = new System.Drawing.Size(11, 13);
             this.InstructionsLabel.TabIndex = 19;
+            this.InstructionsLabel.Text = "I";
             // 
             // ErrorLabel
             // 
             this.ErrorLabel.AutoSize = true;
             this.ErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.ErrorLabel.Location = new System.Drawing.Point(532, 67);
+            this.ErrorLabel.Location = new System.Drawing.Point(513, 221);
             this.ErrorLabel.Name = "ErrorLabel";
             this.ErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.ErrorLabel.TabIndex = 18;
@@ -129,7 +165,7 @@
             // MossLinkLabel
             // 
             this.MossLinkLabel.AutoSize = true;
-            this.MossLinkLabel.Location = new System.Drawing.Point(513, 67);
+            this.MossLinkLabel.Location = new System.Drawing.Point(524, 38);
             this.MossLinkLabel.Name = "MossLinkLabel";
             this.MossLinkLabel.Size = new System.Drawing.Size(0, 13);
             this.MossLinkLabel.TabIndex = 17;
@@ -137,9 +173,9 @@
             // 
             // SendRequestButton
             // 
-            this.SendRequestButton.Location = new System.Drawing.Point(405, 62);
+            this.SendRequestButton.Location = new System.Drawing.Point(516, 62);
             this.SendRequestButton.Name = "SendRequestButton";
-            this.SendRequestButton.Size = new System.Drawing.Size(102, 23);
+            this.SendRequestButton.Size = new System.Drawing.Size(255, 23);
             this.SendRequestButton.TabIndex = 15;
             this.SendRequestButton.Text = "Send Request";
             this.SendRequestButton.UseVisualStyleBackColor = true;
@@ -156,7 +192,7 @@
             // DirectoryModeCheckBox
             // 
             this.DirectoryModeCheckBox.AutoSize = true;
-            this.DirectoryModeCheckBox.Location = new System.Drawing.Point(273, 66);
+            this.DirectoryModeCheckBox.Location = new System.Drawing.Point(371, 66);
             this.DirectoryModeCheckBox.Name = "DirectoryModeCheckBox";
             this.DirectoryModeCheckBox.Size = new System.Drawing.Size(120, 17);
             this.DirectoryModeCheckBox.TabIndex = 13;
@@ -249,6 +285,7 @@
             this.LanguagesComboBox.Name = "LanguagesComboBox";
             this.LanguagesComboBox.Size = new System.Drawing.Size(121, 21);
             this.LanguagesComboBox.TabIndex = 3;
+            this.LanguagesComboBox.SelectedIndexChanged += new System.EventHandler(this.LanguagesComboBox_SelectedIndexChanged);
             // 
             // LanguageLabel
             // 
@@ -287,6 +324,15 @@
             this.BrowserTab.TabIndex = 1;
             this.BrowserTab.Text = "Browser";
             this.BrowserTab.UseVisualStyleBackColor = true;
+            // 
+            // WebBrowser
+            // 
+            this.WebBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WebBrowser.Location = new System.Drawing.Point(3, 3);
+            this.WebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WebBrowser.Name = "WebBrowser";
+            this.WebBrowser.Size = new System.Drawing.Size(798, 602);
+            this.WebBrowser.TabIndex = 0;
             // 
             // UserIdTab
             // 
@@ -340,20 +386,21 @@
             // 
             this.OptionToolTip.IsBalloon = true;
             // 
-            // WebBrowser
+            // ClearFilesButton
             // 
-            this.WebBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WebBrowser.Location = new System.Drawing.Point(3, 3);
-            this.WebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.WebBrowser.Name = "WebBrowser";
-            this.WebBrowser.Size = new System.Drawing.Size(798, 602);
-            this.WebBrowser.TabIndex = 0;
+            this.ClearFilesButton.Location = new System.Drawing.Point(273, 63);
+            this.ClearFilesButton.Name = "ClearFilesButton";
+            this.ClearFilesButton.Size = new System.Drawing.Size(92, 22);
+            this.ClearFilesButton.TabIndex = 23;
+            this.ClearFilesButton.Text = "Clear Files";
+            this.ClearFilesButton.UseVisualStyleBackColor = true;
+            this.ClearFilesButton.Click += new System.EventHandler(this.ClearFilesButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 637);
+            this.ClientSize = new System.Drawing.Size(804, 637);
             this.Controls.Add(this.TabControl);
             this.Name = "MainForm";
             this.Text = "MOSS App";
@@ -399,6 +446,10 @@
         private System.Windows.Forms.ToolTip OptionToolTip;
         private System.Windows.Forms.Label InstructionsLabel;
         private System.Windows.Forms.WebBrowser WebBrowser;
+        private System.Windows.Forms.Label RestrictFileTypesLabel;
+        private System.Windows.Forms.TextBox RestrictFileTypeTextBox;
+        private System.Windows.Forms.CheckBox RestrictFileTypesCheckBox;
+        private System.Windows.Forms.Button ClearFilesButton;
     }
 }
 
