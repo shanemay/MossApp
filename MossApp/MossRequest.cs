@@ -298,14 +298,8 @@ namespace MossApp
                         Settings.Default.MossOption,
                         this.UserId.ToString(CultureInfo.InvariantCulture),
                         socket);
-                    this.SendOption(
-                        Settings.Default.DirectoryOption,
-                        this.IsDirectoryMode ? "1" : "0",
-                        socket);
-                    this.SendOption(
-                        Settings.Default.ExperimentalOption,
-                        this.IsBetaRequest ? "1" : "0",
-                        socket);
+                    this.SendOption(Settings.Default.DirectoryOption, this.IsDirectoryMode ? "1" : "0", socket);
+                    this.SendOption(Settings.Default.ExperimentalOption, this.IsBetaRequest ? "1" : "0", socket);
                     this.SendOption(
                         Settings.Default.MaxMatchesOption,
                         this.MaxMatches.ToString(CultureInfo.InvariantCulture),
@@ -343,7 +337,9 @@ namespace MossApp
 
                 if (Uri.TryCreate(result, UriKind.Absolute, out var url))
                 {
-                    response = url?.ToString().IndexOf("\n", System.StringComparison.Ordinal) > 0 ? url.ToString().Split('\n')[0] : url?.ToString();
+                    response = url?.ToString().IndexOf("\n", System.StringComparison.Ordinal) > 0
+                                   ? url.ToString().Split('\n')[0]
+                                   : url?.ToString();
                     return true;
                 } // else, not a valid URL, DoNothing();
 
@@ -394,8 +390,20 @@ namespace MossApp
                             fileInfo.Length,
                             fileInfo.FullName.Replace("\\", "/").Replace(" ", string.Empty)))
                     : Encoding.UTF8.GetBytes(
-                        string.Format(FileUploadFormat, number, this.language, fileInfo.Length, fileInfo.Name.Replace(" ", string.Empty))));
-            socket.SendFile(file);
+                        string.Format(
+                            FileUploadFormat,
+                            number,
+                            this.language,
+                            fileInfo.Length,
+                            fileInfo.Name.Replace(" ", string.Empty))));
+            Console.WriteLine(fileInfo.FullName.Replace("\\", "/").Replace(" ", string.Empty));
+            socket.BeginSendFile(file, FileSendCallback, socket);
+        }
+
+        private static void FileSendCallback(IAsyncResult result)
+        {
+            var client = result.AsyncState as Socket;
+            client?.EndSendFile(result);
         }
     }
 }
