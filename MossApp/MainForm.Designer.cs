@@ -62,6 +62,7 @@
             this.EmailLabel = new System.Windows.Forms.Label();
             this.OptionToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ClearFilesButton = new System.Windows.Forms.Button();
+            this.RequestProgressBar = new System.Windows.Forms.ProgressBar();
             this.TabControl.SuspendLayout();
             this.SubmissionTab.SuspendLayout();
             this.BrowserTab.SuspendLayout();
@@ -83,6 +84,7 @@
             // 
             // SubmissionTab
             // 
+            this.SubmissionTab.Controls.Add(this.RequestProgressBar);
             this.SubmissionTab.Controls.Add(this.ClearFilesButton);
             this.SubmissionTab.Controls.Add(this.RestrictFileTypesLabel);
             this.SubmissionTab.Controls.Add(this.RestrictFileTypeTextBox);
@@ -396,6 +398,21 @@
             this.ClearFilesButton.UseVisualStyleBackColor = true;
             this.ClearFilesButton.Click += new System.EventHandler(this.ClearFilesButton_Click);
             // 
+            // RequestProgressBar
+            // 
+            this.RequestProgressBar.AccessibleDescription = "A request to the Moss server is in progress.";
+            this.RequestProgressBar.Cursor = System.Windows.Forms.Cursors.Default;
+            this.RequestProgressBar.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.RequestProgressBar.Location = new System.Drawing.Point(516, 40);
+            this.RequestProgressBar.MarqueeAnimationSpeed = 30;
+            this.RequestProgressBar.Name = "RequestProgressBar";
+            this.RequestProgressBar.Size = new System.Drawing.Size(255, 16);
+            this.RequestProgressBar.Step = 5;
+            this.RequestProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.RequestProgressBar.TabIndex = 24;
+            this.OptionToolTip.SetToolTip(this.RequestProgressBar, "Waiting for a response from Moss server.");
+            this.RequestProgressBar.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,6 +467,7 @@
         private System.Windows.Forms.TextBox RestrictFileTypeTextBox;
         private System.Windows.Forms.CheckBox RestrictFileTypesCheckBox;
         private System.Windows.Forms.Button ClearFilesButton;
+        private System.Windows.Forms.ProgressBar RequestProgressBar;
     }
 }
 

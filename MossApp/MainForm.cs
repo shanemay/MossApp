@@ -34,6 +34,7 @@ namespace MossApp
     using System.IO;
     using System.Linq;
     using System.Text;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     using MossApp.Properties;
@@ -167,11 +168,13 @@ namespace MossApp
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void SendRequestButton_Click(object sender, EventArgs e)
+        private async void SendRequestButton_Click(object sender, EventArgs e)
         {
             if (this.IsValidForm())
             {
                 this.ErrorLabel.Text = string.Empty;
+                this.RequestProgressBar.Visible = true;
+
                 Default.UserId = Convert.ToInt32(this.UserIdTextBox.Text);
                 Default.OptionM = Convert.ToInt32(this.OptionMTextBox.Text);
                 Default.OptionN = Convert.ToInt32(this.OptionNTextBox.Text);
@@ -191,8 +194,13 @@ namespace MossApp
 
                 request.BaseFile.AddRange(this.BaseFileList);
                 request.Files.AddRange(this.SourceFileList);
-
-                if (request.SendRequest(out var response))
+                string response = string.Empty;
+                var task = await Task.Run(() =>
+                {
+                   return request.SendRequest(out response);
+                });
+                this.RequestProgressBar.Visible = false;
+                if (task)
                 {
                     this.MossLinkLabel.Text = response;
                     this.WebBrowser.Navigate(new Uri(response));
